@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net462</TargetFramework>
+    <RootNamespace>QuickLook.Plugin.IcsAgenda</RootNamespace>
+    <AssemblyName>QuickLook.Plugin.IcsAgenda</AssemblyName>
+    <Platforms>AnyCPU;x64</Platforms>
+    <UseWPF>true</UseWPF>
+    <LangVersion>latest</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="QuickLook.Common\**" />
+    <EmbeddedResource Remove="QuickLook.Common\**" />
+    <None Remove="QuickLook.Common\**" />
+    <Page Remove="QuickLook.Common\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="QuickLook.Plugin.Metadata.Base.config" />
+    <None Include="QuickLook.Plugin.Metadata.config" Condition="Exists('QuickLook.Plugin.Metadata.config')">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup Condition="Exists('QuickLook.Common\QuickLook.Common.csproj')">
+    <ProjectReference Include="QuickLook.Common\QuickLook.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('QuickLook.Common\QuickLook.Common.csproj')">
+    <Reference Include="QuickLook.Common">
+      <HintPath>lib\QuickLook.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
