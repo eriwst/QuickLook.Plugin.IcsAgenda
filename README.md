@@ -5,7 +5,7 @@
 
 A lightweight plugin for [QuickLook](https://github.com/QL-Win/QuickLook) that previews `.ics` / iCalendar files as a clean, compact agenda.
 
-![QuickLook ICS Agenda preview](assets/screenshot.png)
+![QuickLook ICS Agenda preview](screenshot.png)
 
 > **AI-assisted development:** This project was developed with extensive assistance from **OpenAI's ChatGPT**. Significant parts of the source code and documentation were AI-generated. The repository owner provided the project idea, requirements, testing, feedback, and design/release decisions.
 
